@@ -48,6 +48,7 @@ CREATE TABLE `xxl_job_log` (
   `handle_code` int(11) NOT NULL COMMENT '执行-状态',
   `handle_msg` text COMMENT '执行-日志',
   `alarm_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '告警状态：0-默认、1-无需告警、2-告警成功、3-告警失败',
+  `job_info` text COMMIT '用户自己打的执行日志',
   PRIMARY KEY (`id`),
   KEY `I_trigger_time` (`trigger_time`),
   KEY `I_handle_code` (`handle_code`)

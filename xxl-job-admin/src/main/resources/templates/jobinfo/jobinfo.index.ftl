@@ -202,7 +202,7 @@ import com.xxl.job.core.handler.IJobHandler;
 public class DemoGlueJobHandler extends IJobHandler {
 
 	@Override
-	public ReturnT<String> execute(String param) throws Exception {
+	public ReturnT<String> execute(String param, long logId) throws Exception {
 		XxlJobLogger.log("XXL-JOB, Hello World.");
 		return ReturnT.SUCCESS;
 	}
@@ -217,6 +217,7 @@ echo "${I18n.jobinfo_script_location}：$0"
 echo "${I18n.jobinfo_field_executorparam}：$1"
 echo "${I18n.jobinfo_shard_index} = $2"
 echo "${I18n.jobinfo_shard_total} = $3"
+echo "${I18n.joblog_logid} = $4"
 <#--echo "参数数量：$#"
 for param in $*
 do
@@ -239,6 +240,7 @@ print "${I18n.jobinfo_script_location}：", sys.argv[0]
 print "${I18n.jobinfo_field_executorparam}：", sys.argv[1]
 print "${I18n.jobinfo_shard_index}：", sys.argv[2]
 print "${I18n.jobinfo_shard_total}：", sys.argv[3]
+print "${I18n.joblog_logid}：", sys.argv[3]
 <#--for i in range(1, len(sys.argv)):
 	time.sleep(1)
 	print "参数", i, sys.argv[i]-->
@@ -261,6 +263,7 @@ logging.info("脚本文件：" + sys.argv[0])
     echo "${I18n.jobinfo_field_executorparam}：$argv[1]  \n";
     echo "${I18n.jobinfo_shard_index} = $argv[2]  \n";
     echo "${I18n.jobinfo_shard_total} = $argv[3]  \n";
+    echo "${I18n.joblog_logid} = $argv[4]  \n";
 
     echo "Good bye!  \n";
     exit(0);
@@ -277,6 +280,7 @@ console.log("${I18n.jobinfo_script_location}: " + arguments[1])
 console.log("${I18n.jobinfo_field_executorparam}: " + arguments[2])
 console.log("${I18n.jobinfo_shard_index}: " + arguments[3])
 console.log("${I18n.jobinfo_shard_total}: " + arguments[4])
+console.log("${I18n.joblog_logid}: " + arguments[5])
 <#--for (var i = 2; i < arguments.length; i++){
 	console.log("参数 %s = %s", (i-1), arguments[i]);
 }-->
@@ -289,9 +293,10 @@ Write-Host "xxl-job: hello powershell"
 
 Write-Host "${I18n.jobinfo_script_location}: " $MyInvocation.MyCommand.Definition
 Write-Host "${I18n.jobinfo_field_executorparam}: "
-	if ($args.Count -gt 2) { $args[0..($args.Count-3)] }
-Write-Host "${I18n.jobinfo_shard_index}: " $args[$args.Count-2]
-Write-Host "${I18n.jobinfo_shard_total}: " $args[$args.Count-1]
+	if ($args.Count -gt 2) { $args[0..($args.Count-4)] }
+Write-Host "${I18n.jobinfo_shard_index}: " $args[$args.Count-3]
+Write-Host "${I18n.jobinfo_shard_total}: " $args[$args.Count-2]
+Write-Host "${I18n.joblog_logid}: " $args[$args.Count-1]
 
 Write-Host "Good bye!"
 exit 0

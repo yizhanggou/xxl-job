@@ -46,7 +46,7 @@ public class ScriptJobHandler extends IJobHandler {
     }
 
     @Override
-    public ReturnT<String> execute(String param) throws Exception {
+    public ReturnT<String> execute(String param, long logId) throws Exception {
 
         if (!glueType.isScript()) {
             return new ReturnT<String>(IJobHandler.FAIL.getCode(), "glueType["+ glueType +"] invalid.");
@@ -72,10 +72,11 @@ public class ScriptJobHandler extends IJobHandler {
 
         // script params：0=param、1=分片序号、2=分片总数
         ShardingUtil.ShardingVO shardingVO = ShardingUtil.getShardingVo();
-        String[] scriptParams = new String[3];
+        String[] scriptParams = new String[4];
         scriptParams[0] = param;
         scriptParams[1] = String.valueOf(shardingVO.getIndex());
         scriptParams[2] = String.valueOf(shardingVO.getTotal());
+        scriptParams[3] = String.valueOf(logId);
 
         // invoke
         XxlJobLogger.log("----------- script file:"+ scriptFileName +" -----------");

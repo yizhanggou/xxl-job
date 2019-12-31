@@ -25,8 +25,8 @@ public class MethodJobHandler extends IJobHandler {
     }
 
     @Override
-    public ReturnT<String> execute(String param) throws Exception {
-        return (ReturnT<String>) method.invoke(target, new Object[]{param});
+    public ReturnT<String> execute(String param, long logId) throws Exception {
+        return (ReturnT<String>) method.invoke(target, new Object[]{param, logId});
     }
 
     @Override
