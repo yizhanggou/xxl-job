@@ -97,7 +97,8 @@
 					                  	<th name="handleTime" >${I18n.joblog_field_handleTime}</th>
 					                  	<th name="handleCode" >${I18n.joblog_field_handleCode}</th>
 					                  	<th name="handleMsg" >${I18n.joblog_field_handleMsg}</th>
-					                  	<th name="handleMsg" >${I18n.system_opt}</th>
+                                        <th name="handleMsg" >${I18n.system_opt}</th>
+                                        <th name="jobInfo" >${I18n.joblog_jobInfo}</th>
 					                </tr>
 				                </thead>
 				                <tbody></tbody>

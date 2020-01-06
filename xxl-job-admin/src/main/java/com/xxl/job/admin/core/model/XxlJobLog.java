@@ -34,6 +34,8 @@ public class XxlJobLog {
 	// alarm info
 	private int alarmStatus;
 
+	private String jobInfo;
+
 	public long getId() {
 		return id;
 	}
@@ -154,4 +156,11 @@ public class XxlJobLog {
 		this.alarmStatus = alarmStatus;
 	}
 
+	public String getJobInfo() {
+		return jobInfo;
+	}
+
+	public void setJobInfo(String jobInfo) {
+		this.jobInfo = jobInfo;
+	}
 }

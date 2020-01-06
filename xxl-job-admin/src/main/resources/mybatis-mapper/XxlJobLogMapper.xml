@@ -24,6 +24,8 @@
 	    <result column="handle_msg" property="handleMsg" />
 
 		<result column="alarm_status" property="alarmStatus" />
+
+		<result column="job_info" property="jobInfo" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -41,7 +43,8 @@
 		t.handle_time,
 		t.handle_code,
 		t.handle_msg,
-		t.alarm_status
+		t.alarm_status,
+		t.job_info
 	</sql>
 	
 	<select id="pageList" resultMap="XxlJobLog">
